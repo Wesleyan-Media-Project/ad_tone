@@ -5,7 +5,7 @@ library(data.table)
 library(tidyverse)                                                                    
 
 # Input files
-path_absa <- "../../aspect_based_sentiment/generic_absa/data/separate_generic_absa_random_forest_118m_with_pred.csv"
+path_absa <- "../../../ABSA/data/118m_ABSA_pred.csv"
 path_rof <- "../data/race_of_focus.rdata"
 path_mention_adtone <- "../../clfs/ad_tone/results/ad_tone_fb_2020_fed_cand_ads_03082022.csv"
 # Output files
