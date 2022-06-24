@@ -57,11 +57,7 @@ df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_
 df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n > 1] <- 'Contrast'
 df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n == 1] <- 'ABSA sum'
 
-# df3$sentiment2 <- 
-#   recode(df3$sentiment,
-#          'Positive' = 'Promote',
-#          'Negative' = 'Attack')
-
+# ABSA-based
 df3$ad_tone_constructed[df3$ad_tone_constructed == 'ABSA sum'] <- df3$sentiment[df3$ad_tone_constructed == 'ABSA sum']
 df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <- 'No ad tone, missing ABSA'
 
@@ -69,14 +65,12 @@ df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <
 # Bucket 1
 
 # Read in mention-based ad tone
-# Missing 27,748 ads (why?)
 df1 <- fread(path_mention_adtone)
 df1 <- df1 %>% select(ad_id, ad_tone)
 names(df1) <- c('ad_id', 'ad_tone_constructed')
 
 #----
 # Combine the buckets
-
 df <- rbind(df1, df3 %>% select(c(ad_id, ad_tone_constructed)))
 
 # We're missing bucket 2 which has no ad tone by definition
