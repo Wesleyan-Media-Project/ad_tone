@@ -1,7 +1,7 @@
 # Ad tone
 
 ## Ad tone constructed
-Based on [this](https://docs.google.com/presentation/d/11E9kX1oVYfMooTdD1GAJfwJtdPIQpYB3lJ7i5e83ZEw/edit#slide=id.g1062def0ba3_0_0) flowchart. The variable is available for about 1.15m ads, the rest are either in the down ballot candidate or rightmost branch (blue box 4-5) of the flowchart and have no ad tone.
+Based on [this](https://docs.google.com/presentation/d/11E9kX1oVYfMooTdD1GAJfwJtdPIQpYB3lJ7i5e83ZEw/edit#slide=id.g1062def0ba3_0_0) flowchart. The variable is available for about 750k ads, the rest are either in the down ballot candidate or rightmost branch (blue box 4-5) of the flowchart and have no ad tone.
 
 To run the script that constructs this variable, [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus), and mention-based ad tone are required.
 
