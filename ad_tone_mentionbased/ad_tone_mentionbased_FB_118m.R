@@ -45,11 +45,11 @@ df$opponent_in_ad <- map2_lgl(df$opponent_fecid, df$all_unique_entities, .f = co
 
 # Code support/attack/contrast
 df$ad_tone <- NA
-df$ad_tone[df$candidate_in_ad & (df$opponent_in_ad == F)] <- "Support"
+df$ad_tone[df$candidate_in_ad & (df$opponent_in_ad == F)] <- "Promote"
 df$ad_tone[(df$candidate_in_ad == F) & df$opponent_in_ad] <- "Attack"
 df$ad_tone[df$candidate_in_ad & df$opponent_in_ad] <- "Contrast"
 # If no one is mentioned, we assume support
-df$ad_tone[(df$candidate_in_ad == F) & (df$opponent_in_ad == F)] <- "Support"
+df$ad_tone[(df$candidate_in_ad == F) & (df$opponent_in_ad == F)] <- "Promote"
 
 # Remove ad if there is no candidate FEC ID
 df <- df[df$fecid_formerge != "",]

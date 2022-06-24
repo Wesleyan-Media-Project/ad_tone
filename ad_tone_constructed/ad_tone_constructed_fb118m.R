@@ -18,9 +18,9 @@ absa <- fread(path_absa)
 absa <- aggregate(absa$predicted_sentiment, list(absa$ad_id, absa$detected_entities), sum)
 names(absa) <- c("ad_id", "target", "sentiment")
 
-absa$sentiment[absa$sentiment > 0] <- "Positive"
-absa$sentiment[absa$sentiment < 0] <- "Negative"
-absa$sentiment[absa$sentiment == 0] <- "Neutral"
+absa$sentiment[absa$sentiment > 0] <- "Promote"
+absa$sentiment[absa$sentiment < 0] <- "Attack"
+absa$sentiment[absa$sentiment == 0] <- "Contrast"
 
 # Read race of focus data
 load(path_rof)
@@ -57,12 +57,12 @@ df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_
 df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n > 1] <- 'Contrast'
 df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n == 1] <- 'ABSA sum'
 
-df3$sentiment2 <- 
-  recode(df3$sentiment,
-         'Positive' = 'Promote',
-         'Negative' = 'Attack')
+# df3$sentiment2 <- 
+#   recode(df3$sentiment,
+#          'Positive' = 'Promote',
+#          'Negative' = 'Attack')
 
-df3$ad_tone_constructed[df3$ad_tone_constructed == 'ABSA sum'] <- df3$sentiment2[df3$ad_tone_constructed == 'ABSA sum']
+df3$ad_tone_constructed[df3$ad_tone_constructed == 'ABSA sum'] <- df3$sentiment[df3$ad_tone_constructed == 'ABSA sum']
 df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <- 'No ad tone, missing ABSA'
 
 #----
@@ -81,11 +81,7 @@ df <- rbind(df1, df3 %>% select(c(ad_id, ad_tone_constructed)))
 
 # We're missing bucket 2 which has no ad tone by definition
 
-# Recode neutrals to contrast
-# See ad_tone_constructed_count_true_neutrals.R for why
-df$ad_tone_constructed <- 
-  recode(df$ad_tone_constructed,
-         'Neutral' = 'Contrast',
-         'Support' = 'Promote')
+# Kick out no ad tone since it adds nothing and just wastes space
+df <- df %>% filter(ad_tone_constructed %in% c("Attack", "Contrast", "Promote"))
 
 fwrite(df, path_output)
