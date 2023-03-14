@@ -5,11 +5,11 @@ library(data.table)
 library(tidyverse)                                                                    
 
 # Input files
-path_absa <- "../../ABSA/data/118m_ABSA_pred.csv.gz"
+path_absa <- "../../ABSA/data/140m_ABSA_pred.csv.gz"
 path_rof <- "../../race_of_focus/data/race_of_focus.rdata"
-path_mention_adtone <- "../data/ad_tone_mentionbased_fb118m.csv"
+path_mention_adtone <- "../data/ad_tone_mentionbased_fb140m.csv"
 # Output files
-path_output <- "../data/ad_tone_constructed_fb118m.csv.gz"
+path_output <- "../data/ad_tone_constructed_fb140m.csv.gz"
 
 # Read ABSA data
 absa <- fread(path_absa)
