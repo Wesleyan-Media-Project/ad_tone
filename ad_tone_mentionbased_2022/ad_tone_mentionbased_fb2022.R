@@ -4,7 +4,7 @@ library(purrr)
 library(stringr)
 
 # Input files
-path_el <- "../../entity_linking_2022/facebook/data/detected_entities_fb22.csv.gz"
+path_el <- "../../entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"
 path_opponents <- "../../datasets/candidates/opponents_2022.csv"
 path_master <- "../../datasets/facebook/fb2022_master_0905_1108.csv.gz"
 path_wmpent <- "../../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv"

@@ -1,0 +1,5 @@
+stringr_1.5.0
+purrr_1.0.1
+data.table_1.14.8
+R.utils_2.12.2
+dplyr_1.1.0
