@@ -23,3 +23,6 @@ Rscript ad_tone_constructed_fb140m.R
 
 ## Requirements
 The scripts use R (4.2.2). The packages we used are described in `requirements_r.txt`.
+
+## To-do
+The script for 2022 is not necessarily up-to-date, and the scripts for Google and TV (2020) only exist on my computer and are definitely not up-to-date.
