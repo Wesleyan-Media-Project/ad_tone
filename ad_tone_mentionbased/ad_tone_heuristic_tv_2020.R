@@ -86,4 +86,4 @@ df <- select(df, c(creative, ad_tone))
 df <- df[is.na(df$creative) == F,]
 
 # Save results
-fwrite(df, "../data/ad_tone_mentionbased_fb2020_candidates_only.csv")
+fwrite(df, "../data/ad_tone_mentionbased_tv2020_candidates_only.csv")
