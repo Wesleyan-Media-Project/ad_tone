@@ -80,6 +80,3 @@ cd ad_tone_mentionbased
 Rscript ad_tone_mentionbased_FB_140m.R
 ```
 and can also alternatively be done through the RStudio interface. 
-
-## To-do
-This was written by Markus Neumann - believe that scripts for Google and TV (2020) are not posted, not sure about up-to-dateness. The script for 2022 is not necessarily up-to-date, and the scripts for Google and TV (2020) only exist on my computer and are definitely not up-to-date.
