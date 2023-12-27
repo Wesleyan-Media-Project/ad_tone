@@ -6,7 +6,10 @@ library(stringr)
 # Input files
 path_el <- "../../entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"
 path_opponents <- "../../datasets/candidates/opponents_2022.csv"
-path_master <- "../../fb_2022/fb_2022_adid_var1.csv.gz"
+path_master <- "../../data-post-production/fb_2022/fb_2022_adid_var1.csv.gz"
+# The original repo fb_2022 and google_2022 are both now archived into the
+# data-post-production repo, you may find this file in the data-post-production repo
+# or in our Figshare collection.
 path_wmpent <- "../../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv"
 # Output files
 path_out <- "../data/ad_tone_mentionbased_fb2022.csv"
@@ -18,7 +21,7 @@ opp <- fread(path_opponents) %>% select(wmpid, opponents)
 # Masterfile
 mf <- fread(path_master) %>% select(ad_id, pd_id)
 # WMP entity file
-ent <- fread(path_wmpent) %>% 
+ent <- fread(path_wmpent) %>%
   filter(wmp_spontype == "campaign" & (wmp_office == "us house" | wmp_office == "us senate")) %>%
   select(pd_id, wmpid)
 
@@ -32,7 +35,7 @@ df <- left_join(mf, ent, by = "pd_id") %>%
 
 
 # Check whether a candidate or their opponents are mentioned in an ad
-compare_candidates <- function(x, y){
+compare_candidates <- function(x, y) {
   # The any is only for the second use case,
   # but it doesn't break the first
   any(x %in% y)
@@ -49,7 +52,7 @@ df$ad_tone[df$candidate_in_ad & df$opponent_in_ad] <- "Contrast"
 df$ad_tone[(df$candidate_in_ad == F) & (df$opponent_in_ad == F)] <- "Promote"
 
 # Remove ad if there is no candidate FEC ID
-df <- df[df$wmpid != "",]
+df <- df[df$wmpid != "", ]
 
 # Keep only the relevant columns
 df <- select(df, c(ad_id, ad_tone))
