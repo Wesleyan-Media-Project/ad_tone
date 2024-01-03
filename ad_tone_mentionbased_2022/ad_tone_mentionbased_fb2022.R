@@ -6,9 +6,11 @@ library(stringr)
 # Input files
 path_el <- "../../entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"
 path_opponents <- "../../datasets/candidates/opponents_2022.csv"
-path_master <- "../../data-post-production/fb_2022/fb_2022_adid_var1.csv.gz"
-# The original repo fb_2022 and google_2022 are both now archived into the
-# data-post-production repo, you may find this file in the data-post-production repo
+path_master <- "fb_2022_adid_var1.csv.gz"
+# "fb_2022_adid_var1.csv.gz" is the output table from
+# part of data-post-production repo that merges preprocessed results.
+# Source: data-post-production/01-merge-results/01_merge_preprocessed_results
+# you may find this file in the data-post-production repo
 # or in our Figshare collection.
 path_wmpent <- "../../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv"
 # Output files
