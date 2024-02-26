@@ -56,7 +56,6 @@ The construction of ad tone is based on [this](https://docs.google.com/presentat
 
 First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use r-studio along with R. A link to this program can be found [here](https://rstudio-education.github.io/hopr/starting.html)
 <br>
-Here is a link that walks you through downloading and using both programs. <br>
 The scripts use R (4.2.2).
 <br>
 Next, make sure you have the following packages installed in R (the exact version we used of each package is listed [in the requirements_r.txt file)](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/requirements_r.txt) : <br>
