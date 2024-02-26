@@ -1,15 +1,15 @@
 # Wesleyan Media Project - Ad Tone
 
-Welcome! This repo is part of the Cross-platform Election Advertising Transparency initiatIVE (CREATIVE) project. CREATIVE is a joint infrastructure project of WMP and privacy-tech-lab at Wesleyan University. CREATIVE provides cross-platform integration and standardization of political ads collected from Google and Facebook.
+Welcome! This repo is a part of the Cross-platform Election Advertising Transparency initiative ([CREATIVE](https://www.creativewmp.com/)) project. CREATIVE is a joint infrastructure project of WMP and privacy-tech-lab at Wesleyan University. CREATIVE provides cross-platform integration and standardization of political ads collected from Google and Facebook. 
 
-This repo is part of the Final Data Classification section.
+This repo is part of the Data Classification section.
 
 The scripts for ad tone mention-based, all require the [candidates dataset](https://github.com/Wesleyan-Media-Project/datasets) to be cloned into the same top-level folder as the ad_tone repo. Depending on the specific script being run, other repos are also required, which is discussed in more detail in setup.
 
 The scripts in this repo that concern ad_tone_construced all require data from the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus). In addition, mention-based ad tone is also needed (see above). Again, these are assumed to be cloned into the same top-level folder as the entity_linking repo. Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
 
-[A picture of the repo pipeline with this repo highlighted]
-https://camo.githubusercontent.com/f7339b7a62588f2b2931a9e7de16801f2686a1d8a69d979a3a440131abc82322/68747470733a2f2f6d6564696170726f6a6563742e7765736c6579616e2e6564752f77702d636f6e74656e742f75706c6f6164732f323032332f30362f776d705f706970656c696e655f3131313732325f746162732e706e67
+![A picture of the repo pipeline with this repo highlighted](Creative_Pipeline.png)
+
 
 ## Table of Contents
 
@@ -32,11 +32,11 @@ This repo contains 8 R scripts, three that deal with ad tone constructed and fiv
 Each of our repos belongs to one or more of the the following categories:
 
 - Data Collection
-- Data Storage & Processing
-- Preliminary Data Classification
-- Final Data Classification
+- Data Processing
+- Data Classification
+- Compiled Final Data 
 
-This repo is part of the Final Data Classification section.
+This repo is part of the Data Classification section.
 
 ## Data
 
@@ -54,8 +54,7 @@ The construction of ad tone is based on [this](https://docs.google.com/presentat
 
 ### 1. Install R and Packages
 
-First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use r-studio along with R. <br>
-https://rstudio-education.github.io/hopr/starting.html
+First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use r-studio along with R. A link to this program can be found [here](https://rstudio-education.github.io/hopr/starting.html)
 <br>
 Here is a link that walks you through downloading and using both programs. <br>
 The scripts use R (4.2.2).
