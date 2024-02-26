@@ -25,7 +25,7 @@ The scripts in this repo that concern ad_tone_construced all require data from t
 
 This repository contains code that generates two variables: ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack', as well as ad tone constructed, which is based on [this](https://docs.google.com/presentation/d/11E9kX1oVYfMooTdD1GAJfwJtdPIQpYB3lJ7i5e83ZEw/edit#slide=id.g1062def0ba3_0_0) flowchart.
 
-This repo contains 8 R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionebased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
+This repo contains 8 R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionbased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
 
 ## Objective
 
