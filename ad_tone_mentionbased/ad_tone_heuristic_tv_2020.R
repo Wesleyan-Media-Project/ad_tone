@@ -6,8 +6,9 @@ library(dplyr)
 library(pbapply)
 library(haven)
 
+# entity_linking_results_tv_2020_for_ad_tone.csv.gz is an output of the repo entity_linking
 el <- fread("../../entity_linking/tv/data/entity_linking_results_tv_2020_for_ad_tone.csv.gz", data.table = F)
-el <- el %>% 
+el <- el %>%
   mutate(detected_entities = str_remove_all(detected_entities, "'| |\\[|\\]")) %>%
   filter(adtype %in% c("CANDIDATE", "CANDIDATE & PARTY")) %>%
   mutate(sponsor = str_remove(sponsor, " &(.*?)$")) %>%
@@ -19,18 +20,20 @@ el <- el %>%
     "USSEN/" = "US SENATE"
   ))
 
+# TO BE COMPLETED
 sponsor_to_fecid <- read_dta("../data/tv_sponsor_to_fecid/FECIDs_onTV_thru110320.dta")
-sponsor_to_fecid <- sponsor_to_fecid %>% 
+sponsor_to_fecid <- sponsor_to_fecid %>%
   select(sponsor_cmag, race, fecid)
 
 el <- left_join(el, sponsor_to_fecid, by = c("sponsor" = "sponsor_cmag", "race"))
 
 # Merge in candidate opponents
+# cand2020_05192022.csv is an output of the repo datasets
 df2 <- fread("../../datasets/candidates/cand2020_05192022.csv", data.table = F)
 df2 <- select(df2, c(fec_id, opponent_fecid))
 
 # Turn Python list columns into R lists
-convert_python_list <- function(x){
+convert_python_list <- function(x) {
   x <- str_remove_all(x, "'")
   x <- str_remove_all(x, "\\[")
   x <- str_remove_all(x, "\\]")
@@ -40,8 +43,8 @@ convert_python_list <- function(x){
 
 df2$opponent_fecid <- convert_python_list(df2$opponent_fecid)
 df2$opponent_fecid <- str_split(df2$opponent_fecid, ",")
-df2 <- df2[df2$opponent_fecid != "",]
-df2 <- df2[!duplicated(df2$fec_id),] # remove duplicated candidates
+df2 <- df2[df2$opponent_fecid != "", ]
+df2 <- df2[!duplicated(df2$fec_id), ] # remove duplicated candidates
 df <- el
 df <- left_join(df, df2, by = c("fecid" = "fec_id"))
 
@@ -56,13 +59,13 @@ df$detected_entities[df$detected_entities == ""] <- list(NULL)
 # Clean up the detected entities variable a little
 df$detected_entities <- lapply(df$detected_entities, unique)
 # Include pictured candidates
-df$detected_entities <- map2(df$detected_entities, df$aws_face, ~union(.x, .y))
+df$detected_entities <- map2(df$detected_entities, df$aws_face, ~ union(.x, .y))
 df <- df %>% select(-aws_face)
 # Clean up more
 df <- df[-which(unlist(lapply(df$detected_entities, is.null))), ]
 
 # Check whether a candidate or their opponents are mentioned in an ad
-compare_candidates <- function(x, y){
+compare_candidates <- function(x, y) {
   # The any is only for the second use case,
   # but it doesn't break the first
   any(x %in% y)
@@ -79,11 +82,11 @@ df$ad_tone[df$candidate_in_ad & df$opponent_in_ad] <- "Contrast"
 df$ad_tone[(df$candidate_in_ad == F) & (df$opponent_in_ad == F)] <- "Support"
 
 # Remove ad if there is no candidate FEC ID
-df <- df[df$fecid != "",]
+df <- df[df$fecid != "", ]
 
 # Keep only the relevant columns
 df <- select(df, c(creative, ad_tone))
-df <- df[is.na(df$creative) == F,]
+df <- df[is.na(df$creative) == F, ]
 
 # Save results
 fwrite(df, "../data/ad_tone_mentionbased_tv2020_candidates_only.csv")

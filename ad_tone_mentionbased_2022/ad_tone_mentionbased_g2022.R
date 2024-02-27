@@ -4,15 +4,19 @@ library(purrr)
 library(stringr)
 
 # Input files
+
+# TO BE COMPLETED
 path_el <- "../entity_linking_2022/google/data/entity_linking_results_google_2022_notext_combined_20231028.csv.gz"
+# opponents_2022.csv is an output of the repo datasets
 path_opponents <- "../datasets/candidates/opponents_2022.csv"
-path_master <- "g2022_adid_01062021_11082022_var1.csv"
 # "g2022_adid_01062021_11082022_var1.csv" is the output table from
 # part of data-post-production repo that merges preprocessed results.
 # Source: data-post-production/01-merge-results/01_merge_preprocessed_results
 # The original repo fb_2022 and google_2022 are both now archived into the
 # data-post-production repo, you may find this file in the data-post-production repo
 # or in our Figshare collection.
+path_master <- "g2022_adid_01062021_11082022_var1.csv"
+# wmp_google_2022_entities_v112822.csv is an output of the repo datasets
 path_wmpent <- "../datasets/wmp_entity_files/Google/wmp_google_2022_entities_v112822.csv"
 # Output files
 path_out <- "data/ad_tone_mentionbased_g2022.csv"

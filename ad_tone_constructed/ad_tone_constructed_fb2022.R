@@ -6,7 +6,10 @@ library(data.table)
 library(purrr)
 
 # Input files
+
+# fb2022_ABSA_pred.csv.gz is an output from the repo ABSA
 path_absa <- "../../ABSA/data/fb2022_ABSA_pred.csv.gz"
+# race_of_focus_fb2022.rdata is an output from the repo race_of_focus
 path_rof <- "../../race_of_focus/data/race_of_focus_fb2022.rdata"
 path_mention_adtone <- "../data/ad_tone_mentionbased_fb2022.csv"
 # Output files
@@ -25,42 +28,48 @@ absa$sentiment[absa$sentiment == 0] <- "Contrast"
 
 # Read race of focus data
 load(path_rof)
-df <- df %>% 
+df <- df %>%
   select(ad_id, race_of_focus, sub_bucket, all_unique_entities, all_unique_entities_races, all_unique_entities_unique_races_N)
 
 # How many candidates are mentioned/pictured from within the race of focus?
-df$rof_cands_n <- unlist(map2(df$all_unique_entities_races, df$race_of_focus, function(x,y){length(which(y == x))}))
+df$rof_cands_n <- unlist(map2(df$all_unique_entities_races, df$race_of_focus, function(x, y) {
+  length(which(y == x))
+}))
 # How many candidates are mentioned/pictured?
 df$all_unique_entities[df$all_unique_entities == ""] <- list(character(0))
 df$cands_n <- unlist(lapply(df$all_unique_entities, length))
 # Indices of the candidates in the race of focus
-df$rof_cands_idx <- map2(df$race_of_focus, df$all_unique_entities_races, function(x, y){which(x == y)})
+df$rof_cands_idx <- map2(df$race_of_focus, df$all_unique_entities_races, function(x, y) {
+  which(x == y)
+})
 # Candidates in the race of focus
-df$rof_cands <- map2(df$rof_cands_idx, df$all_unique_entities, function(x, y){y[x]})
+df$rof_cands <- map2(df$rof_cands_idx, df$all_unique_entities, function(x, y) {
+  y[x]
+})
 
 # Merge in ABSA sums for when there is one ROF cand
 df$merge_id <- paste(df$ad_id, "_", df$rof_cands)
 df$merge_id[df$rof_cands_n != 1] <- NA
 absa$merge_id <- paste(absa$ad_id, "_", absa$target)
 absa <- select(absa, c(merge_id, sentiment))
-df <- left_join(df, absa, by = 'merge_id')
+df <- left_join(df, absa, by = "merge_id")
 
 #----
 # Bucket 3
-df3 <- df[substr(df$sub_bucket, 1, 1) == "3",]
+df3 <- df[substr(df$sub_bucket, 1, 1) == "3", ]
 df3$ad_tone_constructed <- NA
 
 # Bucket 3, right branch
-df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_n > 1] <- 'Contrast'
-df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_n == 1] <- 'ABSA sum'
-df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_n == 0] <- 'No ad tone'
+df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_n > 1] <- "Contrast"
+df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_n == 1] <- "ABSA sum"
+df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N <= 1 & df3$cands_n == 0] <- "No ad tone"
 # Bucket 3, left branch
-df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n > 1] <- 'Contrast'
-df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n == 1] <- 'ABSA sum'
+df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n > 1] <- "Contrast"
+df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n == 1] <- "ABSA sum"
 
 # ABSA-based
-df3$ad_tone_constructed[df3$ad_tone_constructed == 'ABSA sum'] <- df3$sentiment[df3$ad_tone_constructed == 'ABSA sum']
-df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <- 'No ad tone, missing ABSA'
+df3$ad_tone_constructed[df3$ad_tone_constructed == "ABSA sum"] <- df3$sentiment[df3$ad_tone_constructed == "ABSA sum"]
+df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <- "No ad tone, missing ABSA"
 
 #----
 # Bucket 1
@@ -68,7 +77,7 @@ df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <
 # Read in mention-based ad tone
 df1 <- fread(path_mention_adtone)
 df1 <- df1 %>% select(ad_id, ad_tone)
-names(df1) <- c('ad_id', 'ad_tone_constructed')
+names(df1) <- c("ad_id", "ad_tone_constructed")
 
 #----
 # Combine the buckets
