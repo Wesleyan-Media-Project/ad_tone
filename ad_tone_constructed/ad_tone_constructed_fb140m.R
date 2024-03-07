@@ -9,8 +9,7 @@ library(purrr)
 
 # 140m_ABSA_pred.csv.gz is an outout from the ABSA repo
 path_absa <- "../../ABSA/data/140m_ABSA_pred.csv.gz"
-# TO BE COMPLETED
-path_rof <- "../../race_of_focus/data/race_of_focus.rdata"
+path_rof <- "../../race_of_focus/data/race_of_focus_140m.rdata"
 path_mention_adtone <- "../data/ad_tone_mentionbased_fb140m.csv"
 # Output files
 path_output <- "../data/ad_tone_constructed_fb140m.csv.gz"
