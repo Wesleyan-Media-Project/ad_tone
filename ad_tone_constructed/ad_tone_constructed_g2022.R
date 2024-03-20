@@ -8,12 +8,12 @@ library(purrr)
 # Input files
 
 # google_2022_ABSA_pred.csv.gz is an output from the repo ABSA
-path_absa <- "../ABSA/data/google_2022_ABSA_pred.csv.gz"
+path_absa <- "../../ABSA/data/google_2022_ABSA_pred.csv.gz"
 # race_of_focus_google_2022.rdata is an output from the repo race_of_focus
-path_rof <- "../race_of_focus/data/race_of_focus_google_2022.rdata"
-path_mention_adtone <- "data/ad_tone_mentionbased_g2022.csv"
+path_rof <- "../../race_of_focus/data/race_of_focus_google_2022.rdata"
+path_mention_adtone <- "../data/ad_tone_mentionbased_g2022.csv"
 # Output files
-path_output <- "data/ad_tone_constructed_g2022.csv.gz"
+path_output <- "../data/ad_tone_constructed_g2022.csv.gz"
 
 # Read ABSA data
 absa <- fread(path_absa)
@@ -24,7 +24,7 @@ names(absa) <- c("ad_id", "target", "sentiment")
 
 absa$sentiment[absa$sentiment > 0] <- "Promote"
 absa$sentiment[absa$sentiment < 0] <- "Attack"
-absa$sentiment[absa$sentiment == 0] <- "Contrast"
+absa$sentiment[absa$sentiment == 0] <- "No ad tone, ABSA 0"
 
 # Read race of focus data
 load(path_rof)

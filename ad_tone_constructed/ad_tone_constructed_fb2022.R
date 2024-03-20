@@ -24,7 +24,7 @@ names(absa) <- c("ad_id", "target", "sentiment")
 
 absa$sentiment[absa$sentiment > 0] <- "Promote"
 absa$sentiment[absa$sentiment < 0] <- "Attack"
-absa$sentiment[absa$sentiment == 0] <- "Contrast"
+absa$sentiment[absa$sentiment == 0] <- "No ad tone, ABSA 0"
 
 # Read race of focus data
 load(path_rof)
