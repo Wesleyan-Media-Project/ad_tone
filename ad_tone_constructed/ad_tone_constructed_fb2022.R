@@ -1,6 +1,3 @@
-# Implements ad_tone_constructed, as detailed here:
-# https://docs.google.com/presentation/d/11E9kX1oVYfMooTdD1GAJfwJtdPIQpYB3lJ7i5e83ZEw/edit#slide=id.g1062def0ba3_0_0
-
 library(dplyr)
 library(data.table)
 library(purrr)
