@@ -8,7 +8,7 @@ The scripts for ad tone mention-based, all require the [candidates dataset](http
 
 The scripts in this repo that concern ad_tone_construced all require data from the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus). In addition, mention-based ad tone is also needed (see above). Again, these are assumed to be cloned into the same top-level folder as the entity_linking repo. Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
 
-![A picture of the repo pipeline with this repo highlighted](Creative_Pipeline.png)
+![A picture of the repo pipeline with this repo highlighted](CREATIVE_step3_032524.png)
 
 
 ## Table of Contents
