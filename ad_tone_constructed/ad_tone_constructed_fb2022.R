@@ -149,24 +149,6 @@ dfb2_2 <- dfb2 %>%
 
 df_2 <- rbind(df1, dfb3_2, dfb2_2)
 
-
-#Check the results####
-library(readr)
-ent <- read_csv("../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv")
-df0 <- read_csv("../data_post_production/fb_2022_adid_var.csv.gz")
-
-df4 <- merge(df0, ent, by = 'pd_id', all.x = T)
-df5 <- merge(df4, df_2, by = 'ad_id', all.x = T)
-df6 <- merge(df5, df, by = 'ad_id', all.x = T)
-
-table(df6$ad_tone_constructed.y[df6$wmp_spontype.y == 'group' & df6$federal_verified == 'Yes'])
-table(df6$wmp_spontype.y[df6$federal_verified == 'Yes'], df6$ad_tone_constructed.y[df6$federal_verified == 'Yes'])
-
-table(df6$wmp_spontype.x[df6$bucket.x == '3'], df6$federal_verified[df6$bucket.x == '3'])
-table(df6$sentiment[df6$wmp_spontype.x =='group' & df6$federal_verified == 'Yes' & df6$bucket.y == '3'])
-summary(df6$sentiment == 'No ad tone, ABSA 0' & df6$wmp_spontype.x =='group' & df6$federal_verified == 'Yes' & df6$bucket.y == '3' & df6$cands_n == 1)
-
-el <- read_csv('../entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone_new.csv.gz')
 #####
 
 fwrite(df_2, path_output)
