@@ -6,19 +6,19 @@ library(stringr)
 # Input files
 
 # detected_entities_fb22_for_ad_tone.csv.gz is an output of the repo entity_linking_2022
-path_el <- "../../entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"
+path_el <- "../entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"
 # opponents_2022.csv is an output from the repo datasets
-path_opponents <- "../../datasets/candidates/opponents_2022.csv"
+path_opponents <- "../datasets/candidates/opponents_2022.csv"
 # "fb_2022_adid_var1.csv.gz" is the output table from
 # part of data-post-production repo that merges preprocessed results.
 # Source: data-post-production/01-merge-results/01_merge_preprocessed_results
 # you may find this file in the data-post-production repo
 # or in our Figshare collection.
-path_master <- "fb_2022_adid_var1.csv.gz"
+path_master <- "../data_post_production/fb_2022_adid_var1.csv.gz"
 # wmp_fb_2022_entities_v120122.csv is an output from the repo datasets
-path_wmpent <- "../../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv"
+path_wmpent <- "../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv"
 # Output files
-path_out <- "../data/ad_tone_mentionbased_fb2022.csv"
+path_out <- "data/ad_tone_mentionbased_fb2022.csv"
 
 # Entity linking results
 el <- fread(path_el)
@@ -46,6 +46,7 @@ compare_candidates <- function(x, y) {
   # but it doesn't break the first
   any(x %in% y)
 }
+
 df$candidate_in_ad <- map2_lgl(df$wmpid, df$detected_entities, .f = compare_candidates)
 df$opponent_in_ad <- map2_lgl(df$opponents, df$detected_entities, .f = compare_candidates)
 
