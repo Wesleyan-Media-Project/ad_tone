@@ -1,7 +1,7 @@
 # Wesleyan Media Project - Ad Tone
+Welcome! This repository classifies ads by type (contrast, promote, attack) and by ad tone constructed, a more detailed categorization system.  
 
-Welcome! This repo is a part of the Cross-platform Election Advertising Transparency initiative ([CREATIVE](https://www.creativewmp.com/)) project. CREATIVE is a joint infrastructure project of WMP and privacy-tech-lab at Wesleyan University. CREATIVE provides cross-platform integration and standardization of political ads collected from Google and Facebook. 
-
+This repo is part of the Cross-platform Election Advertising Transparency Initiative (CREATIVE). CREATIVE is a jointly founded infrastructure project by Wesleyan Media Project [(WMP)](https://mediaproject.wesleyan.edu) and [Privacy Tech Lab](https://privacytechlab.org) at Wesleyan University in Connecticut. This program is funded by a National Science Foundation [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2235006) to support making WMP’s work and data accessible to anyone. CREATIVE aims to provide cross-platform integration and standardization of digital advertising data related to federal elections by scraping or gaining access to digital ads themselves. (For more information on the CREATIVE project, click [here](https://www.creativewmp.com/)).
 This repo is part of the Data Classification section.
 
 The scripts for ad tone mention-based, all require the [candidates dataset](https://github.com/Wesleyan-Media-Project/datasets) to be cloned into the same top-level folder as the ad_tone repo. Depending on the specific script being run, other repos are also required, which is discussed in more detail in setup.
@@ -20,6 +20,8 @@ The scripts in this repo that concern ad_tone_construced all require data from t
 - [Data](#data)
 
 - [Setup](#setup)
+
+- [Thank you!](#thank-you)
 
 ## Introduction
 
@@ -88,3 +90,35 @@ Rscript ad_tone_mentionbased_FB_140m.R
 ```
 
 and can also alternatively be done through the RStudio interface.
+
+## Thank You
+
+<p align="center"><strong>We would like to thank our financial supporters!</strong></p><br>
+
+<p align="center">This material is based upon work supported by the National Science Foundation under Grant Numbers 2235006, 2235007, and 2235008.</p>
+
+<p align="center" style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2235006">
+    <img class="img-fluid" src="nsf.png" height="150px" alt="National Science Foundation Logo">
+  </a>
+</p>
+
+<p align="center">The Cross-Platform Election Advertising Transparency Initiative (CREATIVE) is a joint infrastructure project of the Wesleyan Media Project and privacy-tech-lab at Wesleyan University in Connecticut.
+
+<p align="center" style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://www.creativewmp.com/">
+    <img class="img-fluid" src="CREATIVE_logo.png"  width="220px" alt="CREATIVE Logo">
+  </a>
+</p>
+
+<p align="center" style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://mediaproject.wesleyan.edu/">
+    <img src="wmp-logo.png" width="218px" height="100px" alt="Wesleyan Media Project logo">
+  </a>
+</p>
+
+<p align="center" style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://privacytechlab.org/" style="margin-right: 20px;">
+    <img src="./plt_logo.png" width="200px" alt="privacy-tech-lab logo">
+  </a>
+</p>
