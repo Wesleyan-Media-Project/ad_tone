@@ -57,7 +57,7 @@ The construction of ad tone is based on this flowchart.
 
 ![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
 
-When traditional mention-based ad tone is available, we use that; otherwise we sum over ABSA results (also using race of focus). The variable is available for a larger number of ads, and the rest are either in the down ballot candidate or rightmost branch (blue box 4-5) of the flowchart and have no ad tone.
+When traditional mention-based ad tone is available, we use that; otherwise we sum over ABSA results (also using race of focus). The variable is available for a larger number of ads, and the rest have no ad tone.
 
 ## Setup
 
