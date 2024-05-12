@@ -25,7 +25,10 @@ The scripts in this repo that concern ad_tone_construced all require data from t
 
 ## Introduction
 
-This repository contains code that generates two variables: ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack', as well as ad tone constructed, which is based on [this](https://docs.google.com/presentation/d/11E9kX1oVYfMooTdD1GAJfwJtdPIQpYB3lJ7i5e83ZEw/edit#slide=id.g1062def0ba3_0_0) flowchart.
+This repository contains code that generates two variables: ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack', as well as ad tone constructed, which is based on this flowchart.
+
+![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
+
 
 This repo contains 8 R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionbased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
 
@@ -50,7 +53,11 @@ Mention-based (or reference-based) ad tone codes ads as 'Contrast' if both the c
 
 ### Ad tone constructed
 
-The construction of ad tone is based on [this](https://docs.google.com/presentation/d/11E9kX1oVYfMooTdD1GAJfwJtdPIQpYB3lJ7i5e83ZEw/edit#slide=id.g1062def0ba3_0_0) flowchart. When traditional mention-based ad tone is available, we use that; otherwise we sum over ABSA results (also using race of focus). The variable is available for a larger number of ads, and the rest are either in the down ballot candidate or rightmost branch (blue box 4-5) of the flowchart and have no ad tone.
+The construction of ad tone is based on this flowchart. 
+
+![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
+
+When traditional mention-based ad tone is available, we use that; otherwise we sum over ABSA results (also using race of focus). The variable is available for a larger number of ads, and the rest are either in the down ballot candidate or rightmost branch (blue box 4-5) of the flowchart and have no ad tone.
 
 ## Setup
 
