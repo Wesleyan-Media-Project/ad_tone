@@ -8,22 +8,17 @@ The scripts for ad tone mention-based, all require the [candidates dataset](http
 
 The scripts in this repo that concern ad_tone_construced all require data from the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus). In addition, mention-based ad tone is also needed (see above). Again, these are assumed to be cloned into the same top-level folder as the entity_linking repo. Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
 
+To analyze the different dimensions of political ad transparency we have developed an analysis pipeline. The scripts in this repo are part of the Data Classification Step in our pipeline. 
 ![A picture of the repo pipeline with this repo highlighted](CREATIVE_step3_032524.png)
 
 
 ## Table of Contents
+[1. Introduction](#introduction)
+[2. Data](#data)
+[3. Setup](#setup)
+[4. Thank you!](#thank-you)
 
-- [Introduction](#introduction)
-
-- [Objective](#objective)
-
-- [Data](#data)
-
-- [Setup](#setup)
-
-- [Thank you!](#thank-you)
-
-## Introduction
+## 1. Introduction
 
 This repository contains code that generates two variables: ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack', as well as ad tone constructed, which is based on this flowchart.
 
@@ -32,18 +27,7 @@ This repository contains code that generates two variables: ad tone mention-base
 
 This repo contains 8 R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionbased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
 
-## Objective
-
-Each of our repos belongs to one or more of the the following categories:
-
-- Data Collection
-- Data Processing
-- Data Classification
-- Compiled Final Data 
-
-This repo is part of the Data Classification section.
-
-## Data
+## 2. Data
 
 The code in this repository creates two variables, ad tone mention-based, and ad tone constructed. Results are saved as a csv file, in the data folder.
 
@@ -59,7 +43,7 @@ The construction of ad tone is based on this flowchart.
 
 When traditional mention-based ad tone is available, we use that; otherwise we sum over ABSA results (also using race of focus). The variable is available for a larger number of ads, and the rest have no ad tone.
 
-## Setup
+## 3. Setup
 
 ### 1. Install R and Packages
 
@@ -98,7 +82,7 @@ Rscript ad_tone_mentionbased_FB_140m.R
 
 and can also alternatively be done through the RStudio interface.
 
-## Thank You
+## 4. Thank You
 
 <p align="center"><strong>We would like to thank our financial supporters!</strong></p><br>
 
