@@ -5,12 +5,12 @@ library(purrr)
 # Input files
 
 # google_2022_ABSA_pred.csv.gz is an output from the repo ABSA
-path_absa <- "../../ABSA/data/google_2022_ABSA_pred.csv.gz"
+path_absa <- "../ABSA/data/google_2022_ABSA_pred.csv.gz"
 # race_of_focus_google_2022.rdata is an output from the repo race_of_focus
-path_rof <- "../../race_of_focus/data/race_of_focus_google_2022.rdata"
-path_mention_adtone <- "../data/ad_tone_mentionbased_g2022.csv"
+path_rof <- "../race_of_focus/data/race_of_focus_google_2022.rdata"
+path_mention_adtone <- "data/ad_tone_mentionbased_g2022.csv"
 # Output files
-path_output <- "../data/ad_tone_constructed_g2022.csv.gz"
+path_output <- "data/ad_tone_constructed_g2022.csv.gz"
 
 # Read ABSA data
 absa <- fread(path_absa)
@@ -24,7 +24,7 @@ absa$sentiment[absa$sentiment < 0] <- "Attack"
 absa$sentiment[absa$sentiment == 0] <- "No ad tone, ABSA 0"
 
 # Read race of focus data
-load(path_rof)
+load(path_rof) # this file will be imported based on which dataframe name you used for the race of focus step. In our case, it was g2022_3.
 
 df <- g2022_3 %>%
   select(ad_id, race_of_focus, sub_bucket, all_unique_entities, all_unique_entities_races, all_unique_entities_unique_races_N)
