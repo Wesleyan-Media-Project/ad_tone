@@ -1,22 +1,25 @@
-# Wesleyan Media Project - Ad Tone
-Welcome! This repository classifies ads by type (contrast, promote, attack) and by ad tone constructed, a more detailed categorization system.  
+# CREATIVE --- Ad Tone
 
-This repo is part of the Cross-platform Election Advertising Transparency Initiative (CREATIVE). CREATIVE is a jointly founded infrastructure project by Wesleyan Media Project [(WMP)](https://mediaproject.wesleyan.edu) and [Privacy Tech Lab](https://privacytechlab.org) at Wesleyan University in Connecticut. This program is funded by a National Science Foundation [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2235006) to support making WMP’s work and data accessible to anyone. CREATIVE aims to provide cross-platform integration and standardization of digital advertising data related to federal elections by scraping or gaining access to digital ads themselves. (For more information on the CREATIVE project, click [here](https://www.creativewmp.com/)).
-This repo is part of the Data Classification section.
+Welcome! This repo contains scripts for classifying political ads by ad tone (e.g., contrast, promote, attack).
 
-The scripts for ad tone mention-based, all require the [candidates dataset](https://github.com/Wesleyan-Media-Project/datasets) to be cloned into the same top-level folder as the ad_tone repo. Depending on the specific script being run, other repos are also required, which is discussed in more detail in setup.
+This repo is part of the [Cross-platform Election Advertising Transparency Initiative (CREATIVE)](https://www.creativewmp.com/). CREATIVE is an academic research project that has the goal of providing the public with analysis tools for more transparency of political ads across online platforms. In particular, CREATIVE provides cross-platform integration and standardization of political ads collected from Google and Facebook. CREATIVE is a joint project of the [Wesleyan Media Project (WMP)](https://mediaproject.wesleyan.edu/) and the [privacy-tech-lab](https://privacytechlab.org/) at [Wesleyan University](https://www.wesleyan.edu).
 
-The scripts in this repo that concern ad_tone_construced all require data from the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus). In addition, mention-based ad tone is also needed (see above). Again, these are assumed to be cloned into the same top-level folder as the entity_linking repo. Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
+To analyze the different dimensions of political ad transparency we have developed an analysis pipeline. The scripts in this repo are part of the Data Classification step in our pipeline.
 
-To analyze the different dimensions of political ad transparency we have developed an analysis pipeline. The scripts in this repo are part of the Data Classification Step in our pipeline. 
 ![A picture of the repo pipeline with this repo highlighted](CREATIVE_step3_032524.png)
 
+**Note**: The scripts for ad tone mention-based (see below) all require the [candidates dataset](https://github.com/Wesleyan-Media-Project/datasets) to be cloned into the same top-level folder as the ad_tone repo. Depending on the specific script being run, scripts from other repos are also required, which is discussed in more detail in the Setup section of this readme.
+
+**Note**: The scripts for concern ad_tone_constructed (see below) all require the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus). In addition, mention-based ad tone is also needed (see above). Again, these are assumed to be cloned into the same top-level folder as the entity_linking repo.
+
+**Note**: Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
 
 ## Table of Contents
-[1. Introduction](#introduction)<br>
-[2. Data](#data)<br>
-[3. Setup](#setup)<br>
-[4. Thank you!](#thank-you)<br>
+
+[1. Introduction](#1-introduction)  
+[2. Data](#2-data)  
+[3. Setup](3-setup)  
+[4. Thank you!](4-thank-you)
 
 ## 1. Introduction
 
@@ -24,8 +27,7 @@ This repository contains code that generates two variables: ad tone mention-base
 
 ![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
 
-
-This repo contains 8 R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionbased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
+This repo contains eight R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionbased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
 
 ## 2. Data
 
@@ -33,11 +35,11 @@ The code in this repository creates two variables, ad tone mention-based, and ad
 
 ### Ad tone mention-based
 
-Mention-based (or reference-based) ad tone codes ads as 'Contrast' if both the candidate and their opponent are mentioned (either in text, or in image appearance), 'Promote' if only the candidate is mentioned, and 'Attack' if only the opponent is mentioned. If no candidate is mentioned, the ad is coded as 'Support' (given that the basic purpose of an ad is to further the preferred candidate's electoral prospects). This variable is available for the candidate ads in the 1.4m dataset.
+Mention-based (or reference-based) results in ads coded as 'Contrast' if both the candidate and their opponent are mentioned in the ad (either in text, or in image appearance), 'Promote' if only the candidate is mentioned, and 'Attack' if only the opponent is mentioned. If no candidate is mentioned, the ad is coded as 'Support' (given that the basic purpose of an ad is to further the preferred candidate's electoral prospects). This variable is available for the candidate ads in the 1.4m dataset.
 
 ### Ad tone constructed
 
-The construction of ad tone is based on this flowchart. 
+The construction of ad tone is based on this flowchart.
 
 ![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
 
@@ -45,21 +47,22 @@ When traditional mention-based ad tone is available, we use that; otherwise we s
 
 ## 3. Setup
 
-### 1. Install R and Packages
+### 3.1 Install R and Packages
 
 First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use r-studio along with R. A link to this program can be found [here](https://rstudio-education.github.io/hopr/starting.html)
-<br>
-The scripts use R (4.2.2).
-<br>
-Next, make sure you have the following packages installed in R (the exact version we used of each package is listed [in the requirements_r.txt file)](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/requirements_r.txt) : <br>
-data.table <br>
-stringr <br>
-purrr <br>
-dplyr <br>
-tidyr <br>
-R.utils
 
-### 2. Download Files Needed
+The scripts use R (4.2.2).
+
+Next, make sure you have the following packages installed in R (the exact version we used of each package is listed in the [requirements_r.txt file](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/requirements_r.txt)):
+
+- data.table
+- stringr
+- purrr
+- dplyr
+- tidyr
+- R.utils
+
+### 3.2 Download Files Needed
 
 In order to use the scripts in this repo, you will need to download the repository into a top level folder. In addition, depending on which scripts you are running, additional repositories will also be necessary. Specifically which repositories are needed depends on which script you are executing.
 
@@ -69,13 +72,13 @@ Looking at the scripts within the ad_tone_mentionbased_2022 folder, they again a
 
 All the scripts in this repo that concern ad_tone_constructed require the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus) and ad tone mention-based (see above). This includes ad_tone_constructed/ad_tone_constructed_fb140m.R, ad_tone_constructed/ad_tone_constructed_fb2022.R and ad_tone_constructed/ad_tone_constructed_g2022.R.
 
-### 3. Run Files
+### 3.3 Run Files
 
 Now, depending on which variable and what data you are interested in analyzing, choose which file to run and do so.
 
 Running the scripts through the terminal would look like this
 
-```
+```bash
 cd ad_tone_mentionbased
 Rscript ad_tone_mentionbased_FB_140m.R
 ```
@@ -84,7 +87,7 @@ and can also alternatively be done through the RStudio interface.
 
 ## 4. Thank You
 
-<p align="center"><strong>We would like to thank our financial supporters!</strong></p><br>
+<p align="center"><strong>We would like to thank our supporters!</strong></p><br>
 
 <p align="center">This material is based upon work supported by the National Science Foundation under Grant Numbers 2235006, 2235007, and 2235008.</p>
 
