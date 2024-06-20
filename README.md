@@ -18,8 +18,8 @@ To analyze the different dimensions of political ad transparency we have develop
 
 [1. Introduction](#1-introduction)  
 [2. Data](#2-data)  
-[3. Setup](3-setup)  
-[4. Thank you!](4-thank-you)
+[3. Setup](#3-setup)  
+[4. Thank you!](#4-thank-you)
 
 ## 1. Introduction
 
