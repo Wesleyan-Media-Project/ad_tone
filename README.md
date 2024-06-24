@@ -8,12 +8,6 @@ To analyze the different dimensions of political ad transparency we have develop
 
 ![A picture of the repo pipeline with this repo highlighted](CREATIVE_step3_032524.png)
 
-**Note**: The scripts for ad tone mention-based (see below) all require the [candidates dataset](https://github.com/Wesleyan-Media-Project/datasets) to be cloned into the same top-level folder as the ad_tone repo. Depending on the specific script being run, scripts from other repos are also required, which is discussed in more detail in the Setup section of this readme.
-
-**Note**: The scripts for concern ad_tone_constructed (see below) all require the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus). In addition, mention-based ad tone is also needed (see above). Again, these are assumed to be cloned into the same top-level folder as the entity_linking repo.
-
-**Note**: Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
-
 ## Table of Contents
 
 [1. Introduction](#1-introduction)  
@@ -23,21 +17,36 @@ To analyze the different dimensions of political ad transparency we have develop
 
 ## 1. Introduction
 
-This repository contains code that generates two variables: ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack', as well as ad tone constructed, which is based on this flowchart.
+This repository contains code that generates two variables. First is called ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack'. We use the outputs from the entity linking [2020](https://github.com/Wesleyan-Media-Project/entity_linking/tree/main) and [2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022/tree/main) repos as an input for this. This coding is decided based on who is mentioned in the ad:
+- If an ad from a candidate mentions the candidate in the ad and not their opponent: Promote
+- If an ad from a candidate mentions their opponent in the ad and not themselves: Attack
+- If an ad from a candidate mentions both the candidate and their opponent in the ad: Contrast
+
+Second, we have ad tone constructed, which utilizes results from the mention-based classification, as well as results from [ABSA](https://github.com/Wesleyan-Media-Project/ABSA/tree/main) and [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus/tree/main) repos to code ads as 'contrast, 'promote' or 'attack'. To visualize our decision-making process for ad-tone constructed, consult this diagram. Also see below for more details.
 
 ![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
 
-This repo contains eight R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, three are in one folder called "ad_tone_mentionbased" and another two are in another folder called "ad_tone_mentionbased_2022". All of the files in "ad_tone_constructed" do equivalent things to each other, they just do so for different data, and the same is true for all of the ad tone mention-based files.
+This repo contains eight R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, scripts related to non-2022 data are in a folder called ["ad_tone_mentionbased"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_mentionbased). The scripts that are related to Facebook and Google 2022 are in another folder called ["ad_tone_mentionbased_2022"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_mentionbased_2022). Thus, if you only want to work on the 2022 data, you do not have to run anything in the ["ad_tone_mentionbased"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_mentionbased) folder.
+All of the a constructed scripts are in ["ad_tone_constructed"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_constructed), regardless of whether they are related to 2022 or non-2022 data. 
 
 ## 2. Data
 
-The code in this repository creates two variables, ad tone mention-based, and ad tone constructed. Results are saved as a csv file, in the data folder.
+The code in this repository creates two variables, ad tone mention-based, and ad tone constructed. Results are saved as a csv file, in the [data](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/data) folder:
+- Mention-based Results for:
+- - [Facebook 2020](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_mentionbased_fb140m.csv)
+- - [Facebook 2022](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_mentionbased_fb2022.csv)
+- - [Google 2020](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_mentionbased_google_2020.csv)
+- - [Google 2022](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_mentionbased_g2022.csv)
+- Constructed Results for:
+- - [Facebook 2020](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_constructed_fb140m.csv.gz)
+- - [Facebook 2022](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_constructed_fb2022.csv.gz)
+- - [Google 2022](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/data/ad_tone_constructed_g2022.csv.gz)
 
-### Ad tone mention-based
+### 2.1 Ad tone mention-based
 
 Mention-based (or reference-based) results in ads coded as 'Contrast' if both the candidate and their opponent are mentioned in the ad (either in text, or in image appearance), 'Promote' if only the candidate is mentioned, and 'Attack' if only the opponent is mentioned. If no candidate is mentioned, the ad is coded as 'Support' (given that the basic purpose of an ad is to further the preferred candidate's electoral prospects). This variable is available for the candidate ads in the 1.4m dataset.
 
-### Ad tone constructed
+### 2.2 Ad tone constructed
 
 The construction of ad tone is based on this flowchart.
 
@@ -51,9 +60,9 @@ When traditional mention-based ad tone is available, we use that; otherwise we s
 
 First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use r-studio along with R. A link to this program can be found [here](https://rstudio-education.github.io/hopr/starting.html)
 
-The scripts use R (4.2.2).
+The scripts use are tested on R 4.2, 4.3, and 4.4.
 
-Next, make sure you have the following packages installed in R (the exact version we used of each package is listed in the [requirements_r.txt file](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/requirements_r.txt)):
+Next, make sure you have the following packages installed in R (the exact version we used of each package is listed in the [requirements_r.txt file](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/requirements_r.txt). These are the versions we tested our scripts on and thus, they may also work with more recent versions):
 
 - data.table
 - stringr
@@ -62,25 +71,40 @@ Next, make sure you have the following packages installed in R (the exact versio
 - tidyr
 - R.utils
 
-### 3.2 Download Files Needed
+### 3.2 Input Files
 
-In order to use the scripts in this repo, you will need to download the repository into a top level folder. In addition, depending on which scripts you are running, additional repositories will also be necessary. Specifically which repositories are needed depends on which script you are executing.
+In order to use the scripts in this repo, you will need outputs from a number of other repos. Specifically which repositories are needed depends on which script you are executing.
 
-All the scripts for ad tone mention-based require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. Looking at those scripts found within the ad_tone_mentionbased folder, ad_tone_mentionbased/ad_tone_heuristic_tv_2020.R requires the [entity linking repo](https://github.com/Wesleyan-Media-Project/entity_linking). ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R requires [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [fb_2020](https://github.com/Wesleyan-Media-Project/fb_2020) and [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking). ad_tone_mentionbased/ad_tone_mentionbased_Google_2020.R requires [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking) and [google_2020](https://github.com/Wesleyan-Media-Project/google_2020). Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
+#### 3.2.1 Mention-based Scripts
+All the scripts for ad tone mention-based require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. 
+Looking at those scripts found within the ad_tone_mentionbased folder:
+- ad_tone_mentionbased/ad_tone_heuristic_tv_2020.R requires the [entity linking repo](https://github.com/Wesleyan-Media-Project/entity_linking).
+- ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R requires [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [fb_2020](https://github.com/Wesleyan-Media-Project/fb_2020) and [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking)
+- ad_tone_mentionbased/ad_tone_mentionbased_Google_2020.R requires [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking) and [google_2020](https://github.com/Wesleyan-Media-Project/google_2020)
 
-Looking at the scripts within the ad_tone_mentionbased_2022 folder, they again all require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. Specifically, ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [entity linking 2022 repo](https://github.com/Wesleyan-Media-Project/entity_linking_2022) and the [data-post-production repo](https://github.com/Wesleyan-Media-Project/data-post-production). ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [entity linking 2022 repo](https://github.com/Wesleyan-Media-Project/entity_linking_2022) as well, along with the [data-post-production repo](https://github.com/Wesleyan-Media-Project/data-post-production). Some csv files in those repos are too large to be uploaded to GitHub. You can download them through our Figshare page.
+Looking at the scripts within the ad_tone_mentionbased_2022 folder, they again all require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. Specifically:
+- ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [entity linking 2022 repo](https://github.com/Wesleyan-Media-Project/entity_linking_2022) and the [data-post-production repo](https://github.com/Wesleyan-Media-Project/data-post-production)
+- ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [entity linking 2022 repo](https://github.com/Wesleyan-Media-Project/entity_linking_2022) as well, along with the [data-post-production repo](https://github.com/Wesleyan-Media-Project/data-post-production).
 
-All the scripts in this repo that concern ad_tone_constructed require the [ABSA dataset](https://github.com/Wesleyan-Media-Project/ABSA) as well as the [race of focus dataset](https://github.com/Wesleyan-Media-Project/race_of_focus) and ad tone mention-based (see above). This includes ad_tone_constructed/ad_tone_constructed_fb140m.R, ad_tone_constructed/ad_tone_constructed_fb2022.R and ad_tone_constructed/ad_tone_constructed_g2022.R.
+Some input files for mention-based scripts require the metadata (e.g., var1 files) for Facebook or Google. These are too large to be uploaded to GitHub. You can download them through our Figshare page:
+- For [Facebook 2020 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R): fb_2020/fb_2020_140m_adid_var1.csv.gz (ADD FIGSHARE LINK ONCE READY)
+- For [Facebook 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R): data_post_production/fb_2022_adid_var1.csv.gz (ADD FIGSHARE LINK ONCE READY)
+- For [Google 2020 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased/ad_tone_mentionbased_Google_2020.R): google_2020/google_2020_adid_var1.csv.gz (ADD FIGSHARE LINK ONCE READY)
+- For [Google 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R): data_post_production/g2022_adid_01062021_11082022_var1.csv.gz (ADD FIGSHARE LINK ONCE READY)
+
+#### 3.2.2 Constructed Scripts
+
+All the scripts in this repo that concern ad_tone_constructed require the outputs from [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus) and ad tone mention-based results (see above).
 
 ### 3.3 Run Files
 
-Now, depending on which variable and what data you are interested in analyzing, choose which file to run and do so.
+Now, depending on which variable and what data you are interested in analyzing, and you can run the script you want accordingly. For example, to do the mention-based classification for Facebook 2022 data, run [ad_tone_mentionbased_fb2022.R](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R).
 
 Running the scripts through the terminal would look like this
 
 ```bash
-cd ad_tone_mentionbased
-Rscript ad_tone_mentionbased_FB_140m.R
+cd ad_tone_mentionbased_2022
+Rscript ad_tone_mentionbased_fb2022.R
 ```
 
 and can also alternatively be done through the RStudio interface.
