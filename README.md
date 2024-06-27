@@ -24,6 +24,8 @@ This repository contains code that generates two variables. First is called ad t
 
 Second, we have ad tone constructed, which utilizes results from the mention-based classification, as well as results from [ABSA](https://github.com/Wesleyan-Media-Project/ABSA/tree/main) and [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus/tree/main) repos to code ads as 'contrast, 'promote' or 'attack'. To visualize our decision-making process for ad-tone constructed, consult this diagram. Also see below for more details.
 
+Data output by the scripts is in the format ad_id,ad_tone. An example row looks like `x1949505221867086,Promote`. 
+
 ![Diagram showing the process by which ad tone constructed is gotten](ad_tone_chart.png)
 
 This repo contains eight R scripts, three that deal with ad tone constructed and five that deal with ad tone mention-based. Of the five scripts related to ad tone mention-based, scripts related to non-2022 data are in a folder called ["ad_tone_mentionbased"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_mentionbased). The scripts that are related to Facebook and Google 2022 are in another folder called ["ad_tone_mentionbased_2022"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_mentionbased_2022). Thus, if you only want to work on the 2022 data, you do not have to run anything in the ["ad_tone_mentionbased"](https://github.com/Wesleyan-Media-Project/ad_tone/tree/main/ad_tone_mentionbased) folder.
@@ -83,9 +85,10 @@ Looking at those scripts found within the ad_tone_mentionbased folder:
 - ad_tone_mentionbased/ad_tone_mentionbased_Google_2020.R requires [`race_of_focus_2020.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_google_2020.rdata) from the race_of_focus directory, [`entity_linking_results_google_2020_notext_all_fields.csv.gz`](https://github.com/Wesleyan-Media-Project/entity_linking/blob/main/google/data/entity_linking_results_google_2020_notext_all_fields.csv.gz) from the entity_linking repo and `google_2020_adid_var1.csv.gz` file that will be on Figshare (ADD FIGSHARE LINK HERE). 
 
 Looking at the scripts within the ad_tone_mentionbased_2022 folder, they again all require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. Specifically:
-- ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [entity linking 2022 repo](https://github.com/Wesleyan-Media-Project/entity_linking_2022) and the [data-post-production repo](https://github.com/Wesleyan-Media-Project/data-post-production)
-- ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [entity linking 2022 repo](https://github.com/Wesleyan-Media-Project/entity_linking_2022) as well, along with the [data-post-production repo](https://github.com/Wesleyan-Media-Project/data-post-production).
+- ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [`/entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"`](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz) file from the entity linking repo, and the `fb_2022_adid_var1.csv.gz` file that will be on Figshare (ADD FIGSHARE LINK HERE). 
+- ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [`entity_linking_results_google_2022_notext_combined.csv.gz `](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/google/data/entity_linking_results_google_2022_notext_combined.csv.gz) file from the entity_linking_2022 repo and the `g2022_adid_01062021_11082022_var1.csv.gz` file that will be on Figshare (ADD FIGSHARE LINK HERE). 
 
+--
 Some input files for mention-based scripts require the metadata (e.g., var1 files) for Facebook or Google. These are too large to be uploaded to GitHub. You can download them through our Figshare page:
 - For [Facebook 2020 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R): fb_2020/fb_2020_140m_adid_var1.csv.gz (ADD FIGSHARE LINK ONCE READY)
 - For [Facebook 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R): data_post_production/fb_2022_adid_var1.csv.gz (ADD FIGSHARE LINK ONCE READY)
@@ -94,7 +97,12 @@ Some input files for mention-based scripts require the metadata (e.g., var1 file
 
 #### 3.2.2 Constructed Scripts
 
-All the scripts in this repo that concern ad_tone_constructed require the outputs from [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race of focus](https://github.com/Wesleyan-Media-Project/race_of_focus) and ad tone mention-based results (see above).
+Looking at the scripts within the ad_ton_constructed folder, they require:
+- ad_tone_constructed/ad_tone_constructed_fb140m.R requires the [`140m_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/140m_ABSA_pred.csv.gz) file from the ABSA repo, the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file from the race_of_focus repo
+- ad_tone_constructed/ad_tone_constructed_fb2022.R requires the [`fb2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/fb2022_ABSA_pred.csv.gz) file from the ABSA repo, the [`race_of_focus_fb2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_fb2022.rdata) file from the race_of_focus repo
+- ad_tone_constructed/ad_tone_constructed_g2022.R requires the [`google_2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/google_2022_ABSA_pred.csv.gz) file from the ABSA repo, the [`race_of_focus_google_2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_google_2022.rdata) file from the race_of_focus repo 
+
+In addition, all scripts within the ad_ton_constructed folder require the ad tone mention-based results (see above).
 
 ### 3.3 Run Files
 
