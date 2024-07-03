@@ -17,7 +17,7 @@ To analyze the different dimensions of political ad transparency we have develop
 
 ## 1. Introduction
 
-This repository contains code that generates two variables. First is called ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack'. We use the outputs from the entity linking [2020](https://github.com/Wesleyan-Media-Project/entity_linking/tree/main) and [2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022/tree/main) repos as an input for this. This coding is decided based on who is mentioned in the ad:
+This repository contains code that generates two variables. First is called ad tone mention-based, which codes ad as 'contrast, 'promote' or 'attack'. We use the outputs from the entity linking [2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022/tree/main) repo as an input for this. This coding is decided based on who is mentioned in the ad:
 - If an ad from a candidate mentions the candidate in the ad and not their opponent: Promote
 - If an ad from a candidate mentions their opponent in the ad and not themselves: Attack
 - If an ad from a candidate mentions both the candidate and their opponent in the ad: Contrast
