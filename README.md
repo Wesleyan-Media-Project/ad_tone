@@ -98,9 +98,11 @@ Some input files for mention-based scripts require the metadata (e.g., var1 file
 #### 3.2.2 Constructed Scripts
 
 Looking at the scripts within the ad_ton_constructed folder, they require:
-- ad_tone_constructed/ad_tone_constructed_fb140m.R requires the [`140m_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/140m_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file from the race_of_focus repo.
 - ad_tone_constructed/ad_tone_constructed_fb2022.R requires the [`fb2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/fb2022_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_fb2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_fb2022.rdata) file from the race_of_focus repo.
 - ad_tone_constructed/ad_tone_constructed_g2022.R requires the [`google_2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/google_2022_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_google_2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_google_2022.rdata) file from the race_of_focus repo.
+
+Legacy script for pre-2022 data production:
+- ad_tone_constructed/ad_tone_constructed_fb140m.R requires the [`140m_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/140m_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file from the race_of_focus repo.
 
 In addition, all scripts within the ad_tone_constructed folder require the ad tone mention-based results (see above).
 
