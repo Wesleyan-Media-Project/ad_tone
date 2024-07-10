@@ -8,8 +8,7 @@ library(stringr)
 
 # race_of_focus_google_2020.rdata is an output of the repo race_of_focus
 path_rof <- "../../race_of_focus/data/race_of_focus_google_2020.rdata"
-# google_2020_adid_var1.csv.gz is an output of the repo google_2020
-path_google_2020_vars <- "../../google_2020/google_2020_adid_var1.csv.gz"
+path_google_2020_vars <- "../../datasets/google/google_2020_adid_var1.csv.gz"
 # entity_linking_results_google_2020_notext_all_fields.csv.gz is an output of the repo entity_linking
 path_el_results <- "../../entity_linking/google/data/entity_linking_results_google_2020_notext_all_fields.csv.gz"
 # these files are outputs of the repo datasets
