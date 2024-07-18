@@ -88,7 +88,7 @@ Looking at the scripts within the ad_tone_mentionbased_2022 folder, they all req
 - ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [`/entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"`](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz) file from the entity linking repo, and the [`fb_2022_adid_var1.csv.gz`](https://figshare.wesleyan.edu/account/articles/26124340) file that is found on Figshare.
 - ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [`entity_linking_results_google_2022_notext_combined.csv.gz `](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/google/data/entity_linking_results_google_2022_notext_combined.csv.gz) file from the entity_linking_2022 repo and the [`g2022_adid_01062021_11082022_var1.csv.gz`](https://figshare.wesleyan.edu/account/articles/26124349) file that is found on Figshare.
 
-Scripts in the ad_tone_mentionbased folder were not used for 2022 election ads data production. They were legacy scripts serving similar purposes towards our 2020 TV and online ads data:
+Scripts in the ad_tone_mentionbased folder were not used for 2022 election ads data production are described down below. They are legacy scripts serving similar purposes towards our 2020 TV and online ads data. They are preserved here for internal use.
 
 - ad_tone_mentionbased/ad_tone_heuristic_tv_2020.R requires the [`entity_linking_results_tv_2020_for_ad_tone.csv.gz`](tv/data/entity_linking_results_tv_2020_for_ad_tone.csv.gz) file of the entity linking repo.
 - ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R requires the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file of the race of focus repo, the [`fb_2020_140m_adid_var1.csv.gz`](https://figshare.wesleyan.edu/account/articles/26093254) file that is found on Figshare and [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking).
@@ -112,7 +112,7 @@ Looking at the scripts within the ad_ton_constructed folder, they require:
 - ad_tone_constructed/ad_tone_constructed_fb2022.R requires the [`fb2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/fb2022_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_fb2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_fb2022.rdata) file from the race_of_focus repo.
 - ad_tone_constructed/ad_tone_constructed_g2022.R requires the [`google_2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/google_2022_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_google_2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_google_2022.rdata) file from the race_of_focus repo.
 
-Legacy script for pre-2022 data production:
+Legacy script for pre-2022 data production, preserved here for internal use:
 
 - ad_tone_constructed/ad_tone_constructed_fb140m.R requires the [`140m_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/140m_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file from the race_of_focus repo.
 
