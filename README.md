@@ -98,7 +98,7 @@ Scripts in the ad_tone_mentionbased folder were not used for 2022 election ads d
 Some input files for mention-based scripts require the metadata (e.g., var1 files) for Facebook or Google. These are too large to be uploaded to GitHub. You can download them through our Figshare page:
 
 - For [Facebook 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R): [data_post_production/fb_2022_adid_var1.csv.gz](https://www.creativewmp.com/data-access/).
-- For [Google 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R): [data_post_production/g2022_adid_01062021_11082022_var1.csv.gz](https://www.creativewmp.com/figshare-links/).
+- For [Google 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R): [data_post_production/g2022_adid_01062021_11082022_var1.csv.gz](https://www.creativewmp.com/data-access/).
 
 Pre-2022 data production:
 
