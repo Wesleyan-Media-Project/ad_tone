@@ -62,7 +62,7 @@ When traditional mention-based ad tone is available, we use that; otherwise we s
 
 ### 3.1 Install R and Packages
 
-First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use r-studio along with R. A link to this program can be found [here](https://rstudio-education.github.io/hopr/starting.html)
+First, make sure you have R installed. In addition, while R can be run from the terminal, many people find it much easier to use R-Studio along with R. A link to this program can be found [here](https://rstudio-education.github.io/hopr/starting.html)
 
 The scripts use are tested on R 4.2, 4.3, and 4.4.
 
@@ -83,36 +83,36 @@ In order to use the scripts in this repo, you will need outputs from a number of
 
 All the scripts for ad tone mention-based require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded.
 
-Looking at the scripts within the ad_tone_mentionbased_2022 folder, they all require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. Specifically:
+Looking at the scripts within the ad_tone_mentionbased_2022 folder, they all require [datasets](https://github.com/Wesleyan-Media-Project/datasets). In addition, depending on the specific script, various other repos must also be downloaded. Note that for the files hosted on Figshare, you will need to fill out a form before gettig immediate access to the data. Specifically:
 
-- ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [`/entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz"`](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz) file from the entity linking repo, and the [`fb_2022_adid_var1.csv.gz`](https://figshare.wesleyan.edu/account/articles/26124340) file that is found on Figshare.
-- ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [`entity_linking_results_google_2022_notext_combined.csv.gz `](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/google/data/entity_linking_results_google_2022_notext_combined.csv.gz) file from the entity_linking_2022 repo and the [`g2022_adid_01062021_11082022_var1.csv.gz`](https://figshare.wesleyan.edu/account/articles/26124349) file that is found on Figshare.
+- ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R requires the [`/entity_linking_2022/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz`](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/facebook/data/detected_entities_fb22_for_ad_tone.csv.gz) file from the entity linking repo, and the [`fb_2022_adid_var1.csv.gz`](https://www.creativewmp.com/data-access/) file that is found on Figshare. 
+- ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R requires the [`entity_linking_results_google_2022_notext_combined.csv.gz `](https://github.com/Wesleyan-Media-Project/entity_linking_2022/blob/main/google/data/entity_linking_results_google_2022_notext_combined.csv.gz) file from the entity_linking_2022 repo and the [`g2022_adid_01062021_11082022_var1.csv.gz`](https://www.creativewmp.com/data-access/) file that is found on Figshare. Once you fill out the form and get access to the files, you will see it under the name g2022 adid var1. 
 
 Scripts in the ad_tone_mentionbased folder were not used for 2022 election ads data production are described down below. They are legacy scripts serving similar purposes towards our 2020 TV and online ads data. They are preserved here for internal use.
 
 - ad_tone_mentionbased/ad_tone_heuristic_tv_2020.R requires the [`entity_linking_results_tv_2020_for_ad_tone.csv.gz`](tv/data/entity_linking_results_tv_2020_for_ad_tone.csv.gz) file of the entity linking repo.
-- ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R requires the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file of the race of focus repo, the [`fb_2020_140m_adid_var1.csv.gz`](https://figshare.wesleyan.edu/account/articles/26093254) file that is found on Figshare and [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking).
+- ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R requires the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file of the race of focus repo, [entity linking](https://github.com/Wesleyan-Media-Project/entity_linking) and `fb_2020_140m_adid_var1.csv.gz`. Note that `fb_2020_140m_adid_var1.csv.gz` is not currently available, but will be shared once it is. 
 - ad_tone_mentionbased/ad_tone_mentionbased_Google_2020.R requires [`race_of_focus_2020.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_google_2020.rdata) from the race_of_focus directory, [`entity_linking_results_google_2020_notext_all_fields.csv.gz`](https://github.com/Wesleyan-Media-Project/entity_linking/blob/main/google/data/entity_linking_results_google_2020_notext_all_fields.csv.gz) from the entity_linking repo and [`google_2020_adid_var1.csv.gz`](https://github.com/Wesleyan-Media-Project/datasets/blob/main/google/google_2020_adid_var1.csv.gz) from the datasets repo.
 
 --
 Some input files for mention-based scripts require the metadata (e.g., var1 files) for Facebook or Google. These are too large to be uploaded to GitHub. You can download them through our Figshare page:
 
-- For [Facebook 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R): [data_post_production/fb_2022_adid_var1.csv.gz](https://figshare.wesleyan.edu/account/articles/26124340).
-- For [Google 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R): [data_post_production/g2022_adid_01062021_11082022_var1.csv.gz](https://figshare.wesleyan.edu/account/articles/26124349).
+- For [Facebook 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_fb2022.R): [data_post_production/fb_2022_adid_var1.csv.gz](https://www.creativewmp.com/data-access/).
+- For [Google 2022 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased_2022/ad_tone_mentionbased_g2022.R): [data_post_production/g2022_adid_01062021_11082022_var1.csv.gz](https://www.creativewmp.com/figshare-links/).
 
 Pre-2022 data production:
 
-- For [Facebook 2020 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R): [fb_2020/fb_2020_140m_adid_var1.csv.gz](https://figshare.wesleyan.edu/account/articles/26124340).
+- For [Facebook 2020 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased/ad_tone_mentionbased_FB_140m.R): fb_2020/fb_2020_140m_adid_var1.csv.gz. Note that `fb_2020_140m_adid_var1.csv.gz` is not currently available, but will be shared once it is. 
 - For [Google 2020 script](https://github.com/Wesleyan-Media-Project/ad_tone/blob/main/ad_tone_mentionbased/ad_tone_mentionbased_Google_2020.R): [google_2020_adid_var1.csv.gz](https://github.com/Wesleyan-Media-Project/datasets/blob/main/google/google_2020_adid_var1.csv.gz)
 
 #### 3.2.2 Constructed Scripts
 
-Looking at the scripts within the ad_ton_constructed folder, they require:
+Looking at the scripts within the ad_tone_constructed folder, they require:
 
 - ad_tone_constructed/ad_tone_constructed_fb2022.R requires the [`fb2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/fb2022_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_fb2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_fb2022.rdata) file from the race_of_focus repo.
 - ad_tone_constructed/ad_tone_constructed_g2022.R requires the [`google_2022_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/google_2022_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_google_2022.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_google_2022.rdata) file from the race_of_focus repo.
 
-Legacy script for pre-2022 data production, preserved here for internal use:
+Legacy scripts for pre-2022 data production, preserved here for internal use:
 
 - ad_tone_constructed/ad_tone_constructed_fb140m.R requires the [`140m_ABSA_pred.csv.gz`](https://github.com/Wesleyan-Media-Project/ABSA/blob/main/data/140m_ABSA_pred.csv.gz) file from the ABSA repo, as well as the [`race_of_focus_140m.rdata`](https://github.com/Wesleyan-Media-Project/race_of_focus/blob/main/data/race_of_focus_140m.rdata) file from the race_of_focus repo.
 
