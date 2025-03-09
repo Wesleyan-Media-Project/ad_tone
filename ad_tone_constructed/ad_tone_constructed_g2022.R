@@ -79,11 +79,14 @@ names(df1) <- c("ad_id", "ad_tone_constructed")
 
 #----
 # Combine the buckets
+df3 <- anti_join(df3, df1, by = "ad_id")
 df <- rbind(df1, df3 %>% select(c(ad_id, ad_tone_constructed)))
 
 # We're missing bucket 2 which has no ad tone by definition
 
 # Kick out no ad tone since it adds nothing and just wastes space
 df <- df %>% filter(ad_tone_constructed %in% c("Attack", "Contrast", "Promote"))
+
+n_distinct(df$ad_id)
 
 fwrite(df, path_output)
