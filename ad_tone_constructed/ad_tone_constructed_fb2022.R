@@ -23,10 +23,13 @@ absa$sentiment[absa$sentiment > 0] <- "Promote"
 absa$sentiment[absa$sentiment < 0] <- "Attack"
 absa$sentiment[absa$sentiment == 0] <- "No ad tone, ABSA 0"
 
+#n_distinct(absa$ad_id)
+
 # Read race of focus data
 load(path_rof)
 df <- df %>% 
   select(ad_id, race_of_focus, sub_bucket, all_unique_entities, all_unique_entities_races, all_unique_entities_unique_races_N)
+
 
 # How many candidates are mentioned/pictured from within the race of focus?
 df$rof_cands_n <- unlist(map2(df$all_unique_entities_races, df$race_of_focus, function(x,y){length(which(y == x))}))
@@ -45,6 +48,7 @@ absa$merge_id <- paste(absa$ad_id, "_", absa$target)
 absa <- select(absa, c(merge_id, sentiment))
 df <- left_join(df, absa, by = 'merge_id')
 
+
 #----
 # Bucket 3
 df3 <- df[substr(df$sub_bucket, 1, 1) == "3",]
@@ -62,22 +66,27 @@ df3$ad_tone_constructed[df3$all_unique_entities_unique_races_N > 1 & df3$cands_n
 df3$ad_tone_constructed[df3$ad_tone_constructed == 'ABSA sum'] <- df3$sentiment[df3$ad_tone_constructed == 'ABSA sum']
 df3$ad_tone_constructed[is.na(df3$ad_tone_constructed) & is.na(df3$sentiment)] <- 'No ad tone, missing ABSA'
 
+
 #----
 # Bucket 1
 
 # Read in mention-based ad tone
 df1 <- fread(path_mention_adtone)
+
 df1 <- df1 %>% select(ad_id, ad_tone)
 names(df1) <- c('ad_id', 'ad_tone_constructed')
 
 #----
 # Combine the buckets
+df3 <- anti_join(df3, df1, by = "ad_id")
 df <- rbind(df1, df3 %>% select(c(ad_id, ad_tone_constructed)))
 
 # We're missing bucket 2 which has no ad tone by definition
 
 # Kick out no ad tone since it adds nothing and just wastes space
 df <- df %>% filter(ad_tone_constructed %in% c("Attack", "Contrast", "Promote"))
+
+n_distinct(df$ad_id)
 
 fwrite(df, path_output)
 
