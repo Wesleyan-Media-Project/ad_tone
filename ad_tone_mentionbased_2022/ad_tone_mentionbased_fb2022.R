@@ -16,7 +16,7 @@ path_opponents <- "../datasets/candidates/opponents_2022.csv"
 # or in our Figshare collection.
 path_master <- "../data_post_production/fb_2022_adid_var1.csv.gz"
 # wmp_fb_2022_entities_v120122.csv is an output from the repo datasets
-path_wmpent <- "../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v120122.csv"
+path_wmpent <- "../datasets/wmp_entity_files/Facebook/2022/wmp_fb_2022_entities_v082324.csv"
 # Output files
 path_out <- "data/ad_tone_mentionbased_fb2022.csv"
 
